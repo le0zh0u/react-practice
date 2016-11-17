@@ -10,7 +10,7 @@ module.exports = {
   output:{
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static'
+    publicPath: '/static/'
   },
   plugins: [
     //OccurenceOrderPlugin 给经常使用的模块分配最小长度的id
@@ -23,10 +23,14 @@ module.exports = {
   module: {
     loaders: [
       {
-        test:/\.js$/,
-        loaders:['babel'],
-        exclude:/node_modules/,
-        include:__dirname
+        test: /\.js$/,
+        loader:  'babel-loader' ,
+        exclude: /node_modules/,
+        include: __dirname,
+        query:
+                {
+                  presets:['react','es2015']
+                }
       }
     ]
   }
